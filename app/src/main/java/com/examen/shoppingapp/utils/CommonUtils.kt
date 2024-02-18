@@ -1,6 +1,6 @@
 package com.examen.shoppingapp.utils
 
-class CommonUtils {
+object CommonUtils {
     fun formatPrice(prize: String): String {
         return String.format("%.2f", prize.toDouble())
     }

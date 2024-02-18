@@ -6,8 +6,9 @@ import com.examen.shoppingapp.data.remote.model.Login
 import com.examen.shoppingapp.data.remote.model.LoginResponse
 import com.examen.shoppingapp.data.remote.model.User
 import retrofit2.Response
+import javax.inject.Inject
 
-class ShopRemoteDataSourceImpl( private val apiService: ShopApiService): ShopRemoteDataSource {
+class ShopRemoteDataSourceImpl @Inject constructor( private val apiService: ShopApiService): ShopRemoteDataSource {
 
     override suspend fun loginUser(login: Login): Response<LoginResponse> {
      return apiService.loginUser(login)

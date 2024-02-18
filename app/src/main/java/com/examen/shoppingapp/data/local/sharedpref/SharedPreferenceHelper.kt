@@ -2,8 +2,9 @@ package com.examen.shoppingapp.data.local.sharedpref
 
 import android.content.SharedPreferences
 import com.examen.shoppingapp.utils.Constants
+import javax.inject.Inject
 
-class SharedPreferenceHelper (private val sharedPreferences: SharedPreferences){
+class SharedPreferenceHelper @Inject constructor(private val sharedPreferences: SharedPreferences){
 
     fun isFirstAppLaunch(): Boolean {
         return sharedPreferences.getBoolean(Constants.IS_FIRST_APP_LAUNCH, true)

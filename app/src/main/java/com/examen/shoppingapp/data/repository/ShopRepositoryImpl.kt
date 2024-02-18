@@ -10,10 +10,12 @@ import com.examen.shoppingapp.data.repository.datasource.ShopRemoteDataSource
 import com.examen.shoppingapp.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
+import javax.inject.Inject
 
-class ShopRepositoryImpl(
-private val localDataSource: ShopLocalDataSource,
-private val remoteDataSource: ShopRemoteDataSource
+class ShopRepositoryImpl @Inject constructor(
+    private val remoteDataSource: ShopRemoteDataSource,
+private val localDataSource: ShopLocalDataSource
+
 ):ShopRepository {
     override suspend fun loginUser(login: Login): Resource<LoginResponse> {
       return responseToString(remoteDataSource.loginUser(login))
@@ -25,8 +27,9 @@ private val remoteDataSource: ShopRemoteDataSource
         TODO("Not yet implemented")
     }
 
+    //local db operation
     override suspend fun addToCartItems(cartItem2: CartItem2) {
-        TODO("Not yet implemented")
+
     }
 
     override fun getCartItems(): Flow<List<CartItem2>> {
