@@ -22,8 +22,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         activityLoginBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(activityLoginBinding.root)
 
-        activityLoginBinding.loginUsername.setText("johnd")
-        activityLoginBinding.loginPassword.setText("m38rmF$")
+       /* activityLoginBinding.loginUsername.setText("johnd")
+        activityLoginBinding.loginPassword.setText("m38rmF$")*/
         initView()
         initViewModel()
     }
@@ -66,6 +66,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 if (successful == true){
                     activityLoginBinding.loginProgress.visibility = View.INVISIBLE
                     activityLoginBinding.loginButton.isEnabled = true
+                    Snackbar.make(activityLoginBinding.loginButton,"Login is successfully", Snackbar.LENGTH_SHORT).show()
 
                   //  findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                    // viewModel.navigated()
@@ -77,6 +78,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }else{
+            activityLoginBinding.textViewError.text = result.error
             Snackbar.make(activityLoginBinding.loginButton,"${result.error}",Snackbar.LENGTH_SHORT).show()
         }
     }
