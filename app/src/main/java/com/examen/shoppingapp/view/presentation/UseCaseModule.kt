@@ -16,4 +16,6 @@ class UseCaseModule {
     fun providesAuthUseCase(repository: ShopRepository) : AuthUseCase{
         return AuthUseCase(repository)
     }
+    
+
 }

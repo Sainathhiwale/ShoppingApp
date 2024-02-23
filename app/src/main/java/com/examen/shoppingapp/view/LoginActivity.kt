@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun initView() {
         activityLoginBinding.loginButton.setOnClickListener(this)
+        activityLoginBinding.loginSignup.setOnClickListener(this)
     }
     private fun initViewModel(){
 
@@ -65,6 +66,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 if (successful == true){
                     activityLoginBinding.loginProgress.visibility = View.INVISIBLE
                     activityLoginBinding.loginButton.isEnabled = true
+
                   //  findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                    // viewModel.navigated()
                 }else if(successful == false){

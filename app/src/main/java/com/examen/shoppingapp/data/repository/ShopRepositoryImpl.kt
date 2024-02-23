@@ -24,7 +24,7 @@ private val localDataSource: ShopLocalDataSource
 
 
     override suspend fun registerUser(user: User): Resource<User> {
-        TODO("Not yet implemented")
+        return responseToUserResult(remoteDataSource.registerUser(user))
     }
 
     //local db operation
@@ -73,6 +73,17 @@ private val localDataSource: ShopLocalDataSource
         }
       }
         return Resource.Error(message = "${loginUserResponse.errorBody()?.string()}")
+    }
+
+    // register the user
+
+    private fun responseToUserResult(response : Response<User>) : Resource<User>{
+        if (response.isSuccessful){
+            response.body()?.let { result->
+                return Resource.Success(result)
+            }
+        }
+        return Resource.Error(message = "${response.errorBody()?.string()}")
     }
 
 }
