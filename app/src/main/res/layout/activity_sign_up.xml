@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/constraint_register"
     android:background="@color/white"
     tools:context=".view.SignUpActivity">
 
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Shop IT"
+        android:text="@string/shop_it"
         android:textColor="@color/green"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Shop from our stores with ease"
+        android:text="@string/shop_from_stores"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,7 @@
             android:id="@+id/register_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username" />
+            android:hint="@string/hint_user_name" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +88,7 @@
             android:id="@+id/register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/hint_password"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +101,7 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/button"
         android:fontFamily="sans-serif-medium"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
@@ -114,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
-        android:text="If you have an account? Sign In here"
+        android:text="@string/sign_in_here"
         android:textColor="@color/grey_one"
         app:layout_constraintEnd_toEndOf="@+id/register_button"
         app:layout_constraintStart_toStartOf="@+id/register_button"
@@ -125,6 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:contentDescription="@string/google_image"
         android:src="@drawable/ic_google_auth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -137,6 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/facebook_image"
         android:src="@drawable/ic_facebook_auth"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.5"
@@ -151,6 +154,7 @@
         android:layout_height="34dp"
         android:layout_marginEnd="4dp"
         android:src="@drawable/ic_logo"
+        android:contentDescription="@string/logo_image"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.5"

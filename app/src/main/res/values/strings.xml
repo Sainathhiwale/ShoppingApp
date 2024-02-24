@@ -10,5 +10,11 @@
     <string name="sign_up_here">Didn’t have any account? Sign Up here</string>
     <string name="invalid_error_text">message:</string>
     <string name="logo_image">logo image</string>
+    <!--register screen-->
+    <string name="sign_in_here">If you have an account? Sign In here</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="facebook_image">Facebook Image</string>
+    <string name="google_image">Google Image</string>
+
 
 </resources>

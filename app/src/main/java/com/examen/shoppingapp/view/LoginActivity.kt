@@ -7,6 +7,7 @@ import android.view.View
 import com.examen.shoppingapp.R
 import com.examen.shoppingapp.databinding.ActivityLoginBinding
 import com.examen.shoppingapp.utils.CommonUtils.validateLoginRequest
+import com.examen.shoppingapp.utils.NetworkUtils
 import com.examen.shoppingapp.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +40,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.login_button ->{
-              loginUser()
+                if (NetworkUtils.isNetworkAvailable(this)){
+                    loginUser()
+                }else{
+                    Snackbar.make(activityLoginBinding.constraintLogin,"No Internet Connection",Snackbar.LENGTH_SHORT).show()
+                }
+
             }
             R.id.login_signup ->{
              navigateSignUpScreen()

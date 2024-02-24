@@ -4,11 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.examen.shoppingapp.R
 import com.examen.shoppingapp.databinding.ActivitySignUpBinding
 import com.examen.shoppingapp.utils.CommonUtils.validateLoginRequest
+import com.examen.shoppingapp.utils.NetworkUtils
 import com.examen.shoppingapp.viewmodel.RegisterViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,10 +33,13 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.register_button ->{
+                if (NetworkUtils.isNetworkAvailable(this)){
+                    registerUser()
+                }else{
+                    Snackbar.make(activitySignUpBinding.constraintRegister,"No Internet Connection",Snackbar.LENGTH_SHORT).show()
 
-                registerUser()
-              /*  val toast = Toast.makeText(this, "clicked", Toast.LENGTH_SHORT)
-                toast.show()*/
+                }
+
             }
         }
     }
