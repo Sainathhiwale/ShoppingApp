@@ -24,7 +24,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class LoginTest {
+class LoginActivityTest {
     private val username = "johnd"
     private val password = "m38rmF$"
 
@@ -82,6 +82,41 @@ class LoginTest {
         onView(withId(R.id.login_password))
             .check(matches(isDisplayed()))
     }
+    // check the empty validation for login
+    @Test
+    fun testEmptyUsernameAndPassword(){
+
+        onView(withId(R.id.login_username)).perform(typeText(""))
+        onView(withId(R.id.login_password)).perform(typeText(""),closeSoftKeyboard())
+        // Click login button
+        val loginButton = onView(withId(R.id.login_button))
+        loginButton.perform(click())
+
+        // Assert on error message for empty username or password
+        // Example:
+        /*onView(withText("Username and password cannot be blank"))
+            .check(matches(isDisplayed()))*/
+        val errorTextView = onView(withId(R.id.textView_error))
+        errorTextView.check(matches(isDisplayed()))
+        errorTextView.check(matches(withText("Username and password cannot be blank")))
+    }
+
+    // invalid user name and password test case
+    @Test
+    fun testLoginWithInvalidCredentials(){
+        //enter wrong user name
+        onView(withId(R.id.login_username)).perform(typeText(invalidUsername))
+        // enter wrong password
+        onView(withId(R.id.login_password)).perform(typeText(incorrectPassword),closeSoftKeyboard())
+        // Click the login button
+        onView(withId(R.id.login_button)).perform(click())
+        //Assert that validation text should be displayed
+        onView(withText("username or password is incorrect"))
+            .check(matches(isDisplayed()))
+        /*val errorTextView = onView(withId(R.id.constraint_login))
+        errorTextView.check(matches(isDisplayed()))
+        errorTextView.check(matches(withText("username or password is incorrect")))
+ */   }
 
    // valid login test case
     @Test
@@ -106,42 +141,9 @@ class LoginTest {
         errorTextView.check(matches(isDisplayed()))
         errorTextView.check(matches(withText("Login is successfully")))*/
 
+
     }
 
-    // invalid user name and password test case
-    @Test
-    fun testLoginWithInvalidCredentials(){
-        //enter wrong user name
-        onView(withId(R.id.login_username)).perform(typeText(invalidUsername))
-        // enter wrong password
-        onView(withId(R.id.login_password)).perform(typeText(incorrectPassword),closeSoftKeyboard())
-        // Click the login button
-         onView(withId(R.id.login_button)).perform(click())
-        //Assert that validation text should be displayed
-        onView(withText("username or password is incorrect"))
-            .check(matches(isDisplayed()))
-        /*val errorTextView = onView(withId(R.id.constraint_login))
-        errorTextView.check(matches(isDisplayed()))
-        errorTextView.check(matches(withText("username or password is incorrect")))
- */   }
-
-    @Test
-    fun testEmptyUsernameAndPassword(){
-
-        onView(withId(R.id.login_username)).perform(typeText(""))
-        onView(withId(R.id.login_password)).perform(typeText(""),closeSoftKeyboard())
-        // Click login button
-        val loginButton = onView(withId(R.id.login_button))
-        loginButton.perform(click())
-
-        // Assert on error message for empty username or password
-        // Example:
-        /*onView(withText("Username and password cannot be blank"))
-            .check(matches(isDisplayed()))*/
-        val errorTextView = onView(withId(R.id.textView_error))
-        errorTextView.check(matches(isDisplayed()))
-        errorTextView.check(matches(withText("Username and password cannot be blank")))
-    }
 
     @After
     fun cleanUp(){
