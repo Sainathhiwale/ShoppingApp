@@ -1,4 +1,4 @@
-package com.examen.shoppingapp.view.presentation
+package com.examen.shoppingapp.data.di
 
 import android.content.Context
 import android.content.SharedPreferences

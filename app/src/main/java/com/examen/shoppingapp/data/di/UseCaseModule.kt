@@ -1,4 +1,4 @@
-package com.examen.shoppingapp.view.presentation
+package com.examen.shoppingapp.data.di
 
 import com.examen.shoppingapp.data.domain.AuthUseCase
 import com.examen.shoppingapp.data.repository.ShopRepository
