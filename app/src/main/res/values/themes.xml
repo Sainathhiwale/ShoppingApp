@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.ShoppingApp" parent="Base.Theme.ShoppingApp" />
+    <style name="choiceChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_state_list</item>
+        <item name="android:textColor">@color/chip_text_state_list</item>
+    </style>
 </resources>

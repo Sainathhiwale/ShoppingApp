@@ -1,6 +1,9 @@
 package com.examen.shoppingapp.auth
 
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
+
+@ExperimentalCoroutinesApi
 
 class LoginActivityTest {
 

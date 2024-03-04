@@ -15,6 +15,12 @@
     <string name="sign_up">Sign Up</string>
     <string name="facebook_image">Facebook Image</string>
     <string name="google_image">Google Image</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="what_you_looking_for_today">What are you looking for today?</string>
+    <string name="tma_modular_headphone">TMA-2 Modular Headphone</string>
+    <string name="usd_350">USD 350</string>
+    <string name="reviews">86 Reviews</string>
 
 
 </resources>
