@@ -21,4 +21,6 @@ interface ShopApiService {
     // Home - get all product
     @GET("/products")
     suspend fun getAllProducts() : Response<Shop>
+
+
 }

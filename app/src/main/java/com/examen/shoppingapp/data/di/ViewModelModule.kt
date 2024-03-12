@@ -1,7 +1,10 @@
 package com.examen.shoppingapp.data.di
 
+import android.app.Application
 import com.examen.shoppingapp.data.domain.AuthUseCase
+import com.examen.shoppingapp.data.domain.ProductUseCase
 import com.examen.shoppingapp.data.local.sharedpref.SharedPreferenceHelper
+import com.examen.shoppingapp.viewmodel.HomeViewModel
 import com.examen.shoppingapp.viewmodel.LoginViewModel
 import com.examen.shoppingapp.viewmodel.RegisterViewModel
 import dagger.Module
@@ -24,5 +27,11 @@ class ViewModelModule {
     @Provides
     fun providesRegisterViewModel(authUseCase: AuthUseCase, sharedPreference: SharedPreferenceHelper): RegisterViewModel {
         return RegisterViewModel(authUseCase, sharedPreference)
+    }
+
+    @Singleton
+    @Provides
+    fun providesHomeViewModel(app : Application, productUseCase: ProductUseCase) : HomeViewModel {
+        return HomeViewModel(app, productUseCase)
     }
 }

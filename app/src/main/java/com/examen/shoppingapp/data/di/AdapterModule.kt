@@ -1,7 +1,6 @@
 package com.examen.shoppingapp.data.di
 
-import com.examen.shoppingapp.data.domain.AuthUseCase
-import com.examen.shoppingapp.data.repository.ShopRepository
+import com.examen.shoppingapp.view.adapter.HomeAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,13 +9,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class UseCaseModule {
+class AdapterModule {
+
     @Singleton
     @Provides
-    fun providesAuthUseCase(repository: ShopRepository) : AuthUseCase{
-        return AuthUseCase(repository)
+    fun providesHomeAdapter(): HomeAdapter {
+        return HomeAdapter()
     }
-
-    
-
 }
