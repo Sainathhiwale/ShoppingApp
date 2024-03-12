@@ -2,8 +2,10 @@ package com.examen.shoppingapp.data.repository.datasourceImpl
 
 import com.examen.shoppingapp.data.repository.datasource.ShopRemoteDataSource
 import com.examen.shoppingapp.data.remote.ShopApiService
+import com.examen.shoppingapp.data.remote.model.Category
 import com.examen.shoppingapp.data.remote.model.Login
 import com.examen.shoppingapp.data.remote.model.LoginResponse
+import com.examen.shoppingapp.data.remote.model.Shop
 import com.examen.shoppingapp.data.remote.model.User
 import retrofit2.Response
 import javax.inject.Inject
@@ -16,5 +18,13 @@ class ShopRemoteDataSourceImpl @Inject constructor( private val apiService: Shop
 
     override suspend fun registerUser(user: User): Response<User> {
        return apiService.registerUser(user)
+    }
+
+    override suspend fun getAllProduct(): Response<Shop> {
+       return apiService.getAllProducts()
+    }
+
+    override suspend fun getAllCategories(): Response<Category> {
+        TODO("Not yet implemented")
     }
 }

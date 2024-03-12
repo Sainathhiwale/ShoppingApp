@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.examen.shoppingapp.R
 import com.examen.shoppingapp.databinding.ActivityLoginBinding
 import com.examen.shoppingapp.utils.CommonUtils.validateLoginRequest
@@ -23,8 +25,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         activityLoginBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(activityLoginBinding.root)
 
-       /* activityLoginBinding.loginUsername.setText("johnd")
-        activityLoginBinding.loginPassword.setText("m38rmF$")*/
+        activityLoginBinding.loginUsername.setText("johnd")
+        activityLoginBinding.loginPassword.setText("m38rmF$")
         initView()
         initViewModel()
     }
@@ -73,7 +75,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     activityLoginBinding.loginProgress.visibility = View.INVISIBLE
                     activityLoginBinding.loginButton.isEnabled = true
                     Snackbar.make(activityLoginBinding.loginButton,"Login is successfully", Snackbar.LENGTH_SHORT).show()
-
+                    navigatedMain()
                   //  findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                    // viewModel.navigated()
                 }else if(successful == false){
@@ -87,5 +89,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             activityLoginBinding.textViewError.text = result.error
             Snackbar.make(activityLoginBinding.loginButton,"${result.error}",Snackbar.LENGTH_SHORT).show()
         }
+    }
+
+    private fun navigatedMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
