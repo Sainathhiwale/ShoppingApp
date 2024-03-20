@@ -30,11 +30,18 @@ class ShopRepositoryImpl @Inject constructor(
     override suspend fun getAllProducts(): Resource<Shop> {
      return responseToShopResult(remoteDataSource.getAllProduct())
     }
-
-
-
+    // get all product categories
     override suspend fun getAllCategories(): Resource<Category> {
-        TODO("Not yet implemented")
+       return responseToCategoryResult(remoteDataSource.getAllCategories())
+    }
+
+    private fun responseToCategoryResult(response: Response<Category>) : Resource<Category>{
+        if (response.isSuccessful){
+            response.body()?.let { result->
+                return Resource.Success(result)
+            }
+        }
+        return Resource.Error(message = "${response.errorBody()?.string()}")
     }
 
     override suspend fun getCategoryProducts(category: String): Resource<Shop> {

@@ -25,6 +25,6 @@ class ShopRemoteDataSourceImpl @Inject constructor( private val apiService: Shop
     }
 
     override suspend fun getAllCategories(): Response<Category> {
-        TODO("Not yet implemented")
+        return apiService.getAllCategories()
     }
 }

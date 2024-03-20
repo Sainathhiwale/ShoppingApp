@@ -1,5 +1,6 @@
 package com.examen.shoppingapp.data.remote
 
+import com.examen.shoppingapp.data.remote.model.Category
 import com.examen.shoppingapp.data.remote.model.Login
 import com.examen.shoppingapp.data.remote.model.LoginResponse
 import com.examen.shoppingapp.data.remote.model.Shop
@@ -21,6 +22,9 @@ interface ShopApiService {
     // Home - get all product
     @GET("/products")
     suspend fun getAllProducts() : Response<Shop>
+
+    @GET("products/categories")
+    suspend fun getAllCategories() : Response<Category>
 
 
 }

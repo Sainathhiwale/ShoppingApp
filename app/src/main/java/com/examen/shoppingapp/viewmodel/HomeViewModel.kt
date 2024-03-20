@@ -3,7 +3,6 @@ package com.examen.shoppingapp.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.examen.shoppingapp.data.domain.ProductUseCase
 import com.examen.shoppingapp.data.remote.model.Category
@@ -37,6 +36,20 @@ class HomeViewModel @Inject constructor(
       }catch (e:Exception){
           products.postValue(Resource.Error(message = e.localizedMessage ?: "Unknown Error"))
       }
+    }
+
+    fun getAllCategories() = viewModelScope.launch(IO) {
+        categories.postValue(Resource.Loading())
+        try {
+            if (isNetworkAvailable(app)){
+                val apiResult = productUseCase.getAllCategories()
+                categories.postValue(apiResult)
+            }else{
+                categories.postValue(Resource.Error(message = "Internet not available"))
+            }
+        }catch (e : Exception){
+            categories.postValue(Resource.Error(message = "${e.localizedMessage} ?: Unknown Error"))
+        }
     }
 
 }
