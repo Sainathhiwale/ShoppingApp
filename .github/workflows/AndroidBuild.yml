@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build & Release APK
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Code
@@ -32,17 +32,21 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleRelease
 
-      # Step 5: Upload APK artifact
+      # Step 5: Debug APK Output
+      - name: Debug APK Output
+        run: ls -R app/build/outputs/
+
+      # Step 6: Upload APK artifact
       - name: Upload APK Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: Android-Release-APK
+          name: app_debug
           path: app/build/outputs/apk/release/*.apk
 
   release:
     name: Release APK
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Code
@@ -54,5 +58,5 @@ jobs:
         with:
           artifacts: app/build/outputs/apk/release/*.apk
           tag: v1.0.${{ github.run_number }}
-          release_name: "Android Release v1.0.${{ github.run_number }}"
+          name: "Android Release v1.0.${{ github.run_number }}"
           token: ${{ secrets.TOKEN }}
