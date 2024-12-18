@@ -13,49 +13,46 @@ jobs:
     name: Build & Release APK
     runs-on: ubuntu-22.04
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Step 2: Set up Java
       - name: Set up Java JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'zulu'
 
+      # Step 3: Grant Gradle wrapper execution permissions
       - name: Change Gradle Wrapper Permissions
         run: chmod +x ./gradlew
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v2
-        with:
-          api-level: 30
-          build-tools: 30.0.3
+      # Step 4: Build APK with Gradle
+      - name: Build APK
+        run: ./gradlew assembleRelease
 
-      - name: Build APK with Gradle
-        run: ./gradlew assembleRelease --stacktrace
-
-      - name: Debug APK Output
-        run: ls -R app/build/outputs/
-
+      # Step 5: Upload APK artifact
       - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: Android-Release-APK
-          path: app/build/outputs/apk/**/release/*.apk
+          path: app/build/outputs/apk/release/*.apk
 
   release:
     name: Release APK
     needs: build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Step 2: Push APK artifact to GitHub Releases
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: app/build/outputs/apk/**/release/*.apk
+          artifacts: app/build/outputs/apk/release/*.apk
           tag: v1.0.${{ github.run_number }}
-          name: "Android Release v1.0.${{ github.run_number }}"
+          release_name: "Android Release v1.0.${{ github.run_number }}"
           token: ${{ TOKEN }}
-
