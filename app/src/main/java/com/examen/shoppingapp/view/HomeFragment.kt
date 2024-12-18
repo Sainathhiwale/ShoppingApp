@@ -85,7 +85,6 @@ class HomeFragment : Fragment() {
                     Log.i("HomeFragment", "${response.message}")
                 }
             }
-
             //get product
             viewModel.products.observe(viewLifecycleOwner) { shop ->
                 when (shop) {
