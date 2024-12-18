@@ -55,4 +55,4 @@ jobs:
           artifacts: app/build/outputs/apk/release/*.apk
           tag: v1.0.${{ github.run_number }}
           release_name: "Android Release v1.0.${{ github.run_number }}"
-          token: ${{ TOKEN }}
+          token: ${{ secrets.TOKEN }}
