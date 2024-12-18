@@ -3,7 +3,7 @@ name: Android Build & Release
 on:
   pull_request:
     branches:
-      - master
+      - shopping_dashbroad
   push:
     branches:
       - master
