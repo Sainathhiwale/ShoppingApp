@@ -2,8 +2,10 @@ package com.examen.shoppingapp
 
 import com.examen.shoppingapp.data.local.Entity.CartItem2
 import com.examen.shoppingapp.data.local.Entity.ShopItem
+import com.examen.shoppingapp.data.remote.model.Category
 import com.examen.shoppingapp.data.remote.model.Login
 import com.examen.shoppingapp.data.remote.model.LoginResponse
+import com.examen.shoppingapp.data.remote.model.Shop
 import com.examen.shoppingapp.data.remote.model.User
 import com.examen.shoppingapp.data.repository.ShopRepository
 import com.examen.shoppingapp.data.repository.datasource.ShopLocalDataSource
@@ -67,6 +69,18 @@ class FakeShopLocalRepository(private val remoteDataSource: ShopRemoteDataSource
     }
 
     override suspend fun clearWishlist() {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllCategories(): Resource<Category> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getCategoryProducts(category: String): Resource<Shop> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllProducts(): Resource<Shop> {
         TODO("Not yet implemented")
     }
 
