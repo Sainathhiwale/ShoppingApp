@@ -32,11 +32,15 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleRelease
 
-      # Step 5: Upload APK artifact
+      # Step 5: Debug APK Output
+      - name: Debug APK Output
+        run: ls -R app/build/outputs/
+
+      # Step 6: Upload APK artifact
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Android-Release-APK
+          name: app_debug
           path: app/build/outputs/apk/release/*.apk
 
   release:
