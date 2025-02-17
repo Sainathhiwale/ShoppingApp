@@ -56,7 +56,7 @@ jobs:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: app/build/outputs/apk/release/*.apk
+          artifacts: app/build/outputs/apk/debug/*.apk
           tag: v1.0.${{ github.run_number }}
           name: "Android Release v1.0.${{ github.run_number }}"
           token: ${{ secrets.TOKEN }}
